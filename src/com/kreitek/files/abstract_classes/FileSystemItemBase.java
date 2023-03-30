@@ -1,16 +1,14 @@
 package com.kreitek.files.abstract_classes;
 
-import java.util.List;
-
 import com.kreitek.files.classes.Directory;
-import com.kreitek.files.interfaces.FileSystemItem;
+import com.kreitek.files.interfaces.FileSystemBase;
 
-public abstract class FileSystemItemBase implements FileSystemItem {
+public abstract class FileSystemItemBase implements FileSystemBase {
     protected static final String PATH_SEPARATOR = "/";
     protected String name;
-    protected FileSystemItem parent;
+    protected FileSystemBase parent;
 
-    protected FileSystemItemBase(FileSystemItem parent, String name) {
+    protected FileSystemItemBase(FileSystemBase parent, String name) {
         setName(name);
         setParent(parent);
     }
@@ -29,19 +27,19 @@ public abstract class FileSystemItemBase implements FileSystemItem {
     }
 
     @Override
-    public FileSystemItem getParent() {
+    public FileSystemBase getParent() {
         return parent;
     }
 
     @Override
-    public void setParent(FileSystemItem directory) {
+    public void setParent(FileSystemBase directory) {
         if (directory != null && !(directory instanceof Directory)) {
             throw new IllegalArgumentException("El padre solo puede ser un directorio");
         }
         if (this.parent != directory) {
-            if (this.parent != null) this.parent.removeFile(this);
+            if (this.parent != null) ((Directory) parent).removeFile(this);
             this.parent = directory;
-            if (directory != null) directory.addFile(this);
+            if (directory != null) ((Directory) directory).addFile(this);
         }
     }
 
@@ -57,25 +55,6 @@ public abstract class FileSystemItemBase implements FileSystemItem {
     }
 
     @Override
-    public abstract String getExtension();
-
-    @Override
-    public abstract List<FileSystemItem> listFiles();
-
-    @Override
     public abstract int getSize();
 
-    @Override
-    public abstract void open();
-
-    @Override
-    public abstract void setPosition(int numberOfBytesFromBeginning);
-
-    @Override
-    public abstract byte[] read(int numberOfBytesToRead);
-
-    @Override
-    public abstract void write(byte[] buffer);
-
-    public abstract void close();
 }
