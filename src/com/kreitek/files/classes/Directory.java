@@ -1,7 +1,10 @@
-package com.kreitek.files;
+package com.kreitek.files.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.kreitek.files.abstract_classes.FileSystemItemBase;
+import com.kreitek.files.interfaces.FileSystemItem;
 
 public class Directory extends FileSystemItemBase implements FileSystemItem {
 

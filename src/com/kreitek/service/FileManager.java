@@ -1,8 +1,8 @@
 package com.kreitek.service;
 
-import com.kreitek.files.Directory;
-import com.kreitek.files.File;
-import com.kreitek.files.FileSystemItem;
+import com.kreitek.files.classes.Directory;
+import com.kreitek.files.classes.File;
+import com.kreitek.files.interfaces.FileSystemItem;
 
 import java.util.List;
 

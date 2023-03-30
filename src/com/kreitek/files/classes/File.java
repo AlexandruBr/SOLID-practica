@@ -1,8 +1,10 @@
-package com.kreitek.files;
-
-import com.kreitek.files.error.InvalidFileFormatException;
+package com.kreitek.files.classes;
 
 import java.util.List;
+
+import com.kreitek.files.abstract_classes.FileSystemItemBase;
+import com.kreitek.files.error.InvalidFileFormatException;
+import com.kreitek.files.interfaces.FileSystemItem;
 
 public  class File extends FileSystemItemBase implements FileSystemItem {
 
@@ -99,6 +101,7 @@ public  class File extends FileSystemItemBase implements FileSystemItem {
         result.open();
         // Lógica de conversión de mp3 a wav. Se lee de este fichero y se escribe en result
         result.close();
+        
         return result;
     }
 
@@ -117,6 +120,7 @@ public  class File extends FileSystemItemBase implements FileSystemItem {
         result.open();
         // Lógica de conversión de wav a mp3. Se lee de este fichero y se escribe en result
         result.close();
+
         return result;
     }
 
